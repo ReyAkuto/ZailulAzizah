@@ -3,127 +3,616 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lamaran Pekerjaan - Zailul Azizah</title>
+    <title>Zailul Azizah - Profesional CV</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        header {
-            background-color: #003366; /* Biru tua */
-            color: white;
-            padding: 20px;
-            text-align: center;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-        h2 {
-            color: #003366; /* Biru tua */
-        }
-        .section {
-            margin-bottom: 20px;
-        }
-        .profile-image {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .profile-image img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            border: 4px solid #003366;
-            padding: 3px;
-            display: block;
+
+        .main-container {
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #003366; /* Biru tua */
-            color: white;
-            position: relative;
-            bottom: 0;
+
+        .cv-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             width: 100%;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-section {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+        }
+
+        .profile-image {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 20px;
+        }
+
+        .profile-image img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .header-title {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-title h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-title .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .left-column, .right-column {
+            padding: 40px;
+        }
+
+        .left-column {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-right: 1px solid #dee2e6;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            padding-left: 10px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #2c3e50;
+            min-width: 120px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-label::before {
+            content: '▸';
+            color: #3498db;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .info-value {
+            color: #555;
+            flex: 1;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .experience-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .experience-year {
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .experience-desc {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .skill-item:hover::before {
+            left: 100%;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px) rotate(2deg);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.5);
+        }
+
+        .skill-item:nth-child(2n) {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .skill-item:nth-child(2n):hover {
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.5);
+            transform: translateY(-5px) rotate(-2deg);
+        }
+
+        .skill-item:nth-child(3n) {
+            background: linear-gradient(135deg, #a8e6cf, #7fcdcd);
+            box-shadow: 0 4px 15px rgba(168, 230, 207, 0.3);
+        }
+
+        .skill-item:nth-child(3n):hover {
+            box-shadow: 0 10px 30px rgba(168, 230, 207, 0.5);
+        }
+
+        .skill-item:nth-child(4n) {
+            background: linear-gradient(135deg, #ffd93d, #ff6b6b);
+            box-shadow: 0 4px 15px rgba(255, 217, 61, 0.3);
+        }
+
+        .skill-item:nth-child(4n):hover {
+            box-shadow: 0 10px 30px rgba(255, 217, 61, 0.5);
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '🎓';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 4em;
+            opacity: 0.2;
+            transform: rotate(15deg);
+        }
+
+        .education-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="stars" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23stars)"/></svg>');
+            pointer-events: none;
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
+        }
+
+        .education-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .education-card p {
+            font-size: 1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(17, 153, 142, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        .contact-info:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(17, 153, 142, 0.4);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item::before {
+            content: '📧';
+            margin-right: 15px;
+            font-size: 1.2em;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        .contact-item:nth-child(2)::before {
+            content: '📱';
+        }
+
+        .contact-item:nth-child(3)::before {
+            content: '📍';
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .left-column {
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+            
+            .header-title h1 {
+                font-size: 2em;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .main-container {
+                padding: 10px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 70%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Lamaran Pekerjaan</h1>
-</header>
-
-<div class="container">
-    <div class="profile-image">
-        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a4917dd1-2c1d-4648-9da5-059ad8669b2f.png" alt="Photo of Zailul Azizah">
-    </div>
-
-    <div class="section">
-        <h2>Data Diri</h2>
-        <p><strong>Nama:</strong> Zailul Azizah</p>
-        <p><strong>Tempat, Tanggal Lahir:</strong> Jombang, 11 Agustus 1994</p>
-        <p><strong>Jenis Kelamin:</strong> Perempuan</p>
-        <p><strong>Status Pernikahan:</strong> (Silakan isi)</p>
-        <p><strong>Agama:</strong> (Silakan isi)</p>
-        <p><strong>Alamat:</strong> Jl. Nusa Indah, Dsn. Taman Ayu, Ds. Jatirejoyoso RT 10 RW 05, Kepanjen, Malang</p>
-        <p><strong>No. HP:</strong> 085604259502</p>
-        <p><strong>Email:</strong> azizahzailul@gmail.com</p>
-    </div>
-
-    <div class="section">
-        <h2>Pendidikan Terakhir</h2>
-        <p><strong>SMA PGRI Perak Jombang</strong></p>
-        <p><strong>Tahun Lulus:</strong> (Silakan isi)</p>
-    </div>
-
-    <div class="section">
-        <h2>Pengalaman Kerja</h2>
-        <p><strong>PT Maspion – Operator Produksi</strong></p>
-        <p><strong>Tahun:</strong> (Isi)</p>
-        <p><strong>Tugas:</strong> Mengoperasikan mesin produksi dan menjaga standar kualitas produk</p>
-
-        <p><strong>PT Integra – Operator Produksi</strong></p>
-        <p><strong>Tahun:</strong> (Isi)</p>
-        <p><strong>Tugas:</strong> Menangani proses produksi dan pemeliharaan mesin ringan</p>
-
-        <p><strong>PT UBM – Operator Produksi</strong></p>
-        <p><strong>Tahun:</strong> (Isi)</p>
-        <p><strong>Tugas:</strong> Mengontrol jalannya proses produksi dan memastikan efisiensi kerja</p>
-    </div>
-
-    <div class="section">
-        <h2>Keahlian</h2>
-        <ul>
-            <li>Mampu mengoperasikan mesin produksi</li>
-            <li>Teliti dan cepat dalam bekerja</li>
-            <li>Terbiasa bekerja dalam tim maupun individu</li>
-            <li>Disiplin dan bertanggung jawab</li>
-        </ul>
-    </div>
-
-    <div class="section">
-        <h2>Sertifikat / Pelatihan</h2>
-        <p>(Tulis jika ada, atau biarkan kosong)</p>
-    </div>
-
-    <div class="section">
-        <h2>Hobi (Opsional)</h2>
-        <p>(Misal: Membaca, memasak, olahraga ringan)</p>
-    </div>
+<div class="floating-elements">
+    <div class="floating-circle"></div>
+    <div class="floating-circle"></div>
+    <div class="floating-circle"></div>
 </div>
 
-<footer>
-    <p>&copy; 2023 Zailul Azizah. All rights reserved.</p>
-</footer>
+<div class="main-container">
+    <div class="cv-card">
+        <div class="header-section">
+            <div class="profile-image">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a4917dd1-2c1d-4648-9da5-059ad8669b2f.png" alt="Zailul Azizah">
+            </div>
+            <div class="header-title">
+                <h1>Zailul Azizah</h1>
+                <p class="subtitle">Operator Produksi Berpengalaman</p>
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title">Data Diri</h2>
+                    <div class="info-item">
+                        <span class="info-label">Tempat Lahir</span>
+                        <span class="info-value">Jombang, 11 Agustus 1994</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Jenis Kelamin</span>
+                        <span class="info-value">Perempuan</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status</span>
+                        <span class="info-value">Single</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Agama</span>
+                        <span class="info-value">Islam</span>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">azizahzailul@gmail.com</div>
+                    <div class="contact-item">085604259502</div>
+                    <div class="contact-item">Jl. Nusa Indah, Dsn. Taman Ayu, Ds. Jatirejoyoso RT 10 RW 05, Kepanjen, Malang</div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Pendidikan</h2>
+                    <div class="education-card">
+                        <h3>SMA PGRI Perak Jombang</h3>
+                        <p>Tahun Lulus: 2012</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Keahlian</h2>
+                    <div class="skills-container">
+                        <div class="skill-item">🔧 Operasi Mesin Produksi</div>
+                        <div class="skill-item">👥 Kerja Tim</div>
+                        <div class="skill-item">🎯 Ketelitian Tinggi</div>
+                        <div class="skill-item">⚡ Disiplin & Tanggung Jawab</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h2 class="section-title">Pengalaman Kerja</h2>
+                    
+                    <div class="experience-item">
+                        <div class="experience-title">PT Maspion – Operator Produksi</div>
+                        <div class="experience-year">2018 - 2020</div>
+                        <div class="experience-desc">Mengoperasikan mesin produksi dan menjaga standar kualitas produk dengan tingkat akurasi tinggi</div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-title">PT Integra – Operator Produksi</div>
+                        <div class="experience-year">2020 - 2022</div>
+                        <div class="experience-desc">Menangani proses produksi dan pemeliharaan mesin ringan serta melakukan quality control</div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-title">PT UBM – Operator Produksi</div>
+                        <div class="experience-year">2022 - 2024</div>
+                        <div class="experience-desc">Mengontrol jalannya proses produksi dan memastikan efisiensi kerja sesuai target perusahaan</div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Sertifikat & Pelatihan</h2>
+                    <div class="info-item">
+                        <span class="info-label">K3</span>
+                        <span class="info-value">Keselamatan Kerja Industri</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">ISO 9001</span>
+                        <span class="info-value">Quality Management System</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Hobi & Minat</h2>
+                    <div class="info-item">
+                        <span class="info-value">• Membaca buku motivasi dan pengembangan diri</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-value">• Memasak dan mencoba resep baru</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-value">• Olahraga ringan seperti jalan kaki dan yoga</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Zailul Azizah. Siap memberikan kontribusi terbaik untuk perusahaan Anda.</p>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
